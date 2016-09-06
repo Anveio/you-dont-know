@@ -1,4 +1,4 @@
 shovon:
   name: Shovon Hasan
   email: im.shovonhasan@gmail.com
-  password_digest: <%= User.digest('foobarbaz') %>
+  password_digest: <%= User.digest('password') %>
