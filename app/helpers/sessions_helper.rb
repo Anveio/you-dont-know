@@ -21,10 +21,6 @@ module SessionsHelper
         @current_user = user
       end
     end
-<<<<<<< HEAD
-
-=======
->>>>>>> c4224dda237f17e16d6c2dd7ea91a2564096f0cc
   end
   
   def forget(user)
