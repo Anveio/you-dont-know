@@ -82,14 +82,14 @@ class UserTest < ActiveSupport::TestCase
   
   test "should follow and unfollow users" do
     shovon = users(:shovon)
-    invader = users(:invader)
+    archer = users(:archer)
     
-    assert_not shovon.following?(invader)
-    shovon.follow(invader)
-    assert shovon.following?(invader)
-    assert invader.followers.include?(shovon)
-    shovon.unfollow(invader)
-    assert_not shovon.following?(invader)
+    assert_not shovon.following?(archer)
+    shovon.follow(archer)
+    assert shovon.following?(archer)
+    assert archer.followers.include?(shovon)
+    shovon.unfollow(archer)
+    assert_not shovon.following?(archer)
     
   end 
 end

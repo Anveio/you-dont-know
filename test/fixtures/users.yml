@@ -20,6 +20,20 @@ invader:
   activated: true
   activated_at: Time.zone.now
   
+archer:
+  name: Sterling Archer
+  email: thefbomb@baz.gov
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: Time.zone.now
+  
+other:
+  name: Other User
+  email: eleGiggle@baz.gov
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: Time.zone.now
+  
 <% 30.times do |n| %>
 user_<%= n %>:
   name:  <%= "User #{n}" %>
