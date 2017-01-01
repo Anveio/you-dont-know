@@ -1,8 +1,6 @@
-# Ruby on Rails Tutorial sample application
+# Moonbeam, by Shovon Hasan
 
-This is the sample application for
-[*Ruby on Rails Tutorial:
-Learn Web Development with Rails*](http://www.railstutorial.org/)
+Moonbeam is a microblogging social media platform created by Shovon Hasan with guidance from the  [*Ruby on Rails Tutorial*](http://www.railstutorial.org/)
 by [Michael Hartl](http://www.michaelhartl.com/).
 
 ## License
