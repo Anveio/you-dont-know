@@ -1,8 +1,0 @@
-<% if @feed_items.any? %>
-  <ol class="microposts">
-    <%= render @feed_items %>
-  </ol>
-  <%= will_paginate @feed_items %>
-<% else %>
-  Follow some <%= link_to "users", users_path %> to get started.
-<% end %>
