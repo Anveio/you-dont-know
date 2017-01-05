@@ -5,6 +5,13 @@ shovon:
   activated: true
   activated_at: Time.zone.now
   
+applicant:
+  name: Able Bodied
+  email: newapp@trials.com
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: Time.zone.now
+  
 admin:
   name: Admini Strator
   email: admin@admins.com
