@@ -3,7 +3,7 @@ require 'test_helper'
 class ApplicationHelperTest < ActionView::TestCase
   
   def setup
-    @base_title = "Moonbeam"
+    @base_title = "You Dont Know"
   end
   
   test "full title helper" do
