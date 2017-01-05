@@ -3,7 +3,7 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   
   def setup
-    @base_title = "Moonbeam"
+    @base_title = "You Dont Know"
   end
   
   test "should get root" do

@@ -2,7 +2,7 @@ module ApplicationHelper
   
   #Returns the full title on a per-page basis.
   def full_title(page_title = '')
-    base_title = "Moonbeam"
+    base_title = "You Dont Know"
     page_title.empty? ? base_title : "#{page_title} | #{base_title}"
   end
 end
