@@ -1,5 +1,5 @@
 class TrialappsController < ApplicationController
-  before_action :logged_in_user, only: [:create]
+  before_action :logged_in_user, only: [:new]
   before_action :admin_user,     only: [:destroy]
   
   def new
