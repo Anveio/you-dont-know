@@ -18,10 +18,11 @@ class TrialappsController < ApplicationController
   end
   
   def questions
+    
   end
   
   def answers
-    @trialapp = current_user.trialapps.build(trialapps_params)
+    @trialapp = current_user.trialapps.update_attr(trialapps_params)
     if @trialapp.save
       flash[:success] = "Information saved!"
       redirect_to root_url
