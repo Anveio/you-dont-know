@@ -1,9 +1,9 @@
 class Trialapp < ApplicationRecord
   belongs_to :user
-  
-  attr_accessor :accepted
-  
-  def accept_trial
-    self.accepted = true
-  end
+
+  validates :character_name, presence: true
+  validates :server, presence: true
+  validates :character_class, presence: true
+  validates :spec, presence: true
+
 end

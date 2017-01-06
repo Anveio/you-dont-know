@@ -1,0 +1,24 @@
+<% provide(:title, "Apply") %>
+<h1>Your Application</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:trialapp, url: apply_path) do |f| %>
+      <%#= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :character_name %>
+      <%= f.text_field :character_name, placeholder: "Your main", class: 'form-control' %>
+
+      <%= f.label :server %>
+      <%= f.text_field :server, class: 'form-control' %>
+      
+      <%= f.label :character_class %>
+      <%= f.text_field :character_class, class: 'form-control' %>
+      
+      <%= f.label :spec %>
+      <%= f.text_field :spec, class: 'form-control' %>
+
+      <%= f.submit "Next", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
