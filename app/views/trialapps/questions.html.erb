@@ -1,0 +1,24 @@
+<% provide(:title, "Apply") %>
+<h1>Your Application</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:trialapp, url: questions_path) do |f| %>
+      <%#= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label "Do you have publicly available logs?" %>
+      <%= f.text_field :question_one, placeholder: "If so, link them here.", class: 'form-control' %>
+
+      <%= f.label "Where do you get information about your class?" %>
+      <%= f.text_area :question_two, :rows => "5", class: 'form-control' %>
+      
+      <%= f.label "Why are you leaving your previous guild?" %>
+      <%= f.text_area :question_three, :rows => "5", class: 'form-control' %>
+      
+      <%= f.label "Tell us a little about yourself." %>
+      <%= f.text_area :question_four, :rows => "5", class: 'form-control' %>
+
+      <%= f.submit "Submit Application", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
