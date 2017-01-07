@@ -1,0 +1,6 @@
+<li id="trialapp-<%= trialapp.id %>">
+  <%= "Application for #{trialapp.character_name} on #{trialapp.server}, #{trialapp.spec} #{trialapp.character_class}" %>
+  <span class="timestamp">
+    Submitted <%= time_ago_in_words(trialapp.created_at) %> ago.
+  </span>
+</li>

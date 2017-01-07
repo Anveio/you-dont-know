@@ -29,6 +29,7 @@ class TrialappCreateTest < ActionDispatch::IntegrationTest
     assert_difference 'Trialapp.count', 1 do
       post apply_path, params: { trialapp: { character_name: "Anveio", server: "Thrall",
                                  character_class: "Rogue", spec: "Outlaw" } }
+    assert_redirected_to questions_path
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106073811) do
+ActiveRecord::Schema.define(version: 20170107163609) do
 
   create_table "trialapps", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20170106073811) do
     t.string   "server"
     t.string   "character_class"
     t.string   "spec"
+    t.text     "answer_one"
+    t.text     "answer_two"
+    t.text     "answer_three"
+    t.text     "answer_four"
     t.index ["user_id"], name: "index_trialapps_on_user_id"
   end
 

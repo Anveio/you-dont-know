@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @trialapps = @user.trialapps
     redirect_to root_url and return unless @user.activated?
   end
   
@@ -46,20 +47,6 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  end
-  
-  def following
-    @title = "Following"
-    @user = User.find(params[:id])
-    @users = @user.following.paginate(page:params[:page])
-    render 'show_follow'
-  end
-  
-  def followers
-    @title = "Following"
-    @user = User.find(params[:id])
-    @users = @user.followers.paginate(page:params[:page])
-    render 'show_follow'
   end
   
   private
