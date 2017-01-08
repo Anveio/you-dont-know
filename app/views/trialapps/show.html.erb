@@ -1,0 +1,18 @@
+<% provide(:title, @trialapp.character_name) %>
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <%= "#{@trialapp.character_name}\'s Application" %>
+    </h1>
+  </div>
+  <div class="col-md-12">
+    <h4 class="center">Do you have publicly available logs?</h4>
+      <p class="center"><%= "#{@trialapp.character_name}\'s answer: #{@trialapp.answer_one}" %></p>
+    <h4 class="center">Where do you get information about your class?</h4>
+      <p class="center"><%= "#{@trialapp.character_name}\'s answer: #{@trialapp.answer_two}" %></p>
+    <h4 class="center">Why are you leaving your previous guild?</h4>
+      <p class="center"><%= "#{@trialapp.character_name}\'s answer: #{@trialapp.answer_two}" %></p>
+    <h4 class="center">Tell us a little about yourself.</h4>
+      <p class="center"><%= "#{@trialapp.character_name}\'s answer: #{@trialapp.answer_two}" %></p>
+  </div>
+</div>

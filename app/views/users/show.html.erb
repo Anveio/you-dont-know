@@ -8,8 +8,12 @@
   </aside>
   <div class="col-md-8">
     <h3>Your submitted Applications</h3> 
-    <ol class="trialapps">
-      <%= render @trialapps %>
-    </ol>
+    <% if @trialapps.any? %>
+      <ol class="trialapps">
+        <%= render @trialapps %>
+      </ol>
+    <% else %>
+      You've submitted no applications. <%= link_to "Apply now", apply_path %> to get started!
+    <% end %>
   </div>
 </div>

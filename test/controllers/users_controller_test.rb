@@ -33,6 +33,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not @user.admin?
   end
   
+  test "raider attribute should not be editable via the web" do
+    log_in_as(@user)
+    assert_not @user.raider?
+    patch user_path(@user), params: { user: { password: 'password',
+                                              password_confirmation: 'password',
+                                              raider: true } }
+    assert_not @user.raider?
+  end
+  
   test "should redirect destroy to log in page when not logged in" do
     assert_no_difference 'User.count' do
       delete user_path(@user)

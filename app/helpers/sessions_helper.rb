@@ -37,6 +37,14 @@ module SessionsHelper
     !current_user.nil?
   end
   
+  def logged_in_raider?
+    if current_user.nil?
+      return false
+    else
+      return current_user.raider
+    end
+  end
+  
   # Logs out the current user.
   def log_out
     forget(current_user)

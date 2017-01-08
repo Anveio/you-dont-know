@@ -10,4 +10,11 @@ outlaw_rogue:
   character_class: "Rogue"
   spec: "Outlaw"
   
+holy_priest:
+  character_name: "Skythan"
+  server: "Thrall"
+  character_class: "Priest"
+  spec: "Holy"
+  
+  
 

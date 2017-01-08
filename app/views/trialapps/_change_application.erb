@@ -1,11 +1,7 @@
-<% provide(:title, "Apply") %>
-<h1>Your Application</h1>
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@trialapp, url: apply_path) do |f| %>
+    <%= form_for(@trialapp) do |f| %>
       <%#= render 'shared/error_messages', object: f.object %>
-
       <%= f.label :character_name %>
       <%= f.text_field :character_name, placeholder: "Your main", class: 'form-control' %>
 
@@ -20,7 +16,19 @@
       <%= f.label :spec %>
       <%= f.text_field :spec, class: 'form-control' %>
 
-      <%= f.submit "Next", class: "btn btn-primary" %>
+      <%= f.label "Do you have publicly available logs?" %>
+      <%= f.text_field :answer_one, placeholder: "If so, link them here.", class: 'form-control' %>
+
+      <%= f.label "Where do you get information about your class?" %>
+      <%= f.text_area :answer_two, :rows => "3", class: 'form-control' %>
+      
+      <%= f.label "Why are you leaving your previous guild?" %>
+      <%= f.text_area :answer_three, :rows => "3", class: 'form-control' %>
+      
+      <%= f.label "Tell us a little about yourself." %>
+      <%= f.text_area :answer_four, :rows => "5", class: 'form-control' %>
+
+      <%= f.submit "Save Changes", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

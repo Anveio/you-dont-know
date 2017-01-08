@@ -1,6 +1,11 @@
 <li id="trialapp-<%= trialapp.id %>">
-  <%= "Application for #{trialapp.character_name} on #{trialapp.server}, #{trialapp.spec} #{trialapp.character_class}" %>
+  <%= link_to "Application for #{trialapp.character_name} on #{trialapp.server}, #{trialapp.spec} #{trialapp.character_class}", trialapp %>
   <span class="timestamp">
     Submitted <%= time_ago_in_words(trialapp.created_at) %> ago.
   </span>
-</li>
+  <% if current_user.id == trialapp.user_id %>
+    <%= link_to "Edit", edit_trialapp_path(trialapp.id) %>
+  <% end %>
+  <% if current_user.admin? %>
+    | <%= link_to "Delete", trialapp, method: :delete, data: {confirm: "Are you sure you want to delete this application?" } %>
+  <% end %>

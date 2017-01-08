@@ -1,13 +1,14 @@
 class TrialappsController < ApplicationController
-  before_action :logged_in_user,        only: [:create, :new, :questions, :answers]
+  before_action :logged_in_user,        only: [:create, :new, :questions, :answers, :index]
   before_action :admin_user,            only: :destroy
-  before_action :correct_user,          only: :retract
+  before_action :correct_user,          only: :show
+  before_action :raider_user,           only: :index
   
   def new
-    #if current_user.trialapps.exists?
-    #  flash[:info] = "Your account has already submitted an application"
-    #end
-    @trialapp = Trialapp.new
+    if current_user.trialapps.exists?
+      flash[:info] = "Your account has already submitted an application."
+    end
+    @trialapp = current_user.trialapps.new
   end
   
   def create
@@ -23,16 +24,6 @@ class TrialappsController < ApplicationController
   def questions
     @trialapp = current_user.trialapps.first
   end
-  
-  def answers
-    @trialapp = @user.trialapps.update_attributes(trialapps_params)
-    if @trialapp.save
-      flash[:success] = "Information saved!"
-      redirect_to root_url
-    else
-      render 'questions'
-    end
-  end
 
   def reject
   end
@@ -40,19 +31,35 @@ class TrialappsController < ApplicationController
   def accept
   end
   
+  def edit
+    @trialapp = Trialapp.find(params[:id])
+  end
+  
   def destroy
+    Trialapp.find(params[:id]).destroy
+    flash[:success] = "Applicated deleted"
+    redirect_to applications_path
   end
   
   def retract
   end
   
+  def index
+    @feed_items = current_user.feed.paginate(page: params[:page])
+    @user = current_user
+  end
+  
+  def show
+    @trialapp = Trialapp.find(params[:id])
+  end
+  
   def update
     @trialapp = current_user.trialapps.last
     if @trialapp.update_attributes(trialapps_params)
-        flash[:success] = "Your application has been updated"
+        flash[:success] = "Your application has been saved"
         redirect_to root_url
     else
-      render 'edit'
+      render 'questions'
     end
   end
   
@@ -66,11 +73,22 @@ class TrialappsController < ApplicationController
     
     # Before filters
     def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      @trialapp = Trialapp.find(params[:id])
+      @user = User.find(@trialapp.user_id)
+      redirect_to(root_url) unless (current_user?(@user) || admin?(@user))
+    end
+    
+    def raider_user
+      unless current_user.raider?
+        redirect_to(root_url)
+        flash[:danger] = "You're not authorized to view this page."
+      end
     end
     
     def admin_user
-      redirect_to(root_url) unless current_user.admin?
+      unless current_user.admin?
+        redirect_to(root_url)
+        flash[:danger] = "You're not authorized to view this page."
+      end
     end
 end
