@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 6 }, allow_nil: true
   def feed
-    Trialapp.where("user_id = ?", id)
+    Trialapp.where("id = ?", id)
   end
     
   def self.digest(string)

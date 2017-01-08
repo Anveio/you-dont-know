@@ -45,7 +45,7 @@ class TrialappsController < ApplicationController
   end
   
   def index
-    @feed_items = current_user.feed.paginate(page: params[:page])
+    @feed_items = Trialapp.all.paginate(page: params[:page])
     @user = current_user
   end
   
