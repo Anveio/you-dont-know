@@ -1,5 +1,6 @@
 class TrialappsController < ApplicationController
   before_action :logged_in_user,        only: [:create, :new, :questions, :answers, :index]
+  before_action :user_has_agreed,       only: [:create, :new, :questions]
   before_action :admin_user,            only: :destroy
   before_action :correct_user,          only: :show
   before_action :raider_user,           only: :index
@@ -19,6 +20,9 @@ class TrialappsController < ApplicationController
     else
       render 'new'
     end
+  end
+  
+  def agree
   end
   
   def questions
@@ -83,6 +87,12 @@ class TrialappsController < ApplicationController
       unless current_user.raider?
         redirect_to(root_url)
         flash[:danger] = "You're not authorized to view this page."
+      end
+    end
+    
+    def user_has_agreed
+      unless current_user.agreed?
+        redirect_to agree_path
       end
     end
     

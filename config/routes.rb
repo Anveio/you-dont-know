@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get    '/privacy_policy',   to: 'static_pages#privacy_policy'
   get    '/signup',           to: 'users#new'
   post   '/signup',           to: 'users#create'
+  get    '/agree',            to: 'trialapps#agree'
   get    '/apply',            to: 'trialapps#new'
   post   '/apply',            to: 'trialapps#create'
   get    '/questions',        to: 'trialapps#questions'
