@@ -9,6 +9,10 @@ outlaw_rogue:
   server: "Thrall"
   character_class: "Rogue"
   spec: "Outlaw"
+  answer_one: "Answer 1"
+  answer_two: "Answer 2"
+  answer_three: "Answer 3"
+  answer_four: "Answer 4"
   
 holy_priest:
   character_name: "Skythan"

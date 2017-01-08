@@ -5,9 +5,9 @@ class TrialappsController < ApplicationController
   before_action :raider_user,           only: :index
   
   def new
-    if current_user.trialapps.exists?
-      flash[:info] = "Your account has already submitted an application."
-    end
+    #if current_user.trialapps.exists?
+    #  flash[:info] = "Your account has already submitted an application."
+    #end
     @trialapp = current_user.trialapps.new
   end
   
@@ -24,7 +24,7 @@ class TrialappsController < ApplicationController
   def questions
     @trialapp = current_user.trialapps.first
   end
-
+  
   def reject
   end
   
@@ -54,10 +54,11 @@ class TrialappsController < ApplicationController
   end
   
   def update
-    @trialapp = current_user.trialapps.last
+    @user = current_user
+    @trialapp = Trialapp.find(params[:id])
     if @trialapp.update_attributes(trialapps_params)
         flash[:success] = "Your application has been saved"
-        redirect_to root_url
+        redirect_to user_url(current_user)
     else
       render 'questions'
     end
