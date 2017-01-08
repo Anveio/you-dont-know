@@ -76,7 +76,7 @@ class TrialappsController < ApplicationController
     def correct_user
       @trialapp = Trialapp.find(params[:id])
       @user = User.find(@trialapp.user_id)
-      redirect_to(root_url) unless (current_user?(@user) || admin?(@user))
+      redirect_to(root_url) unless (current_user = @user || current_user.admin?)
     end
     
     def raider_user
