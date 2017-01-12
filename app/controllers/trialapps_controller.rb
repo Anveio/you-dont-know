@@ -1,6 +1,6 @@
 class TrialappsController < ApplicationController
   before_action :logged_in_user,        only: [:create, :new, :questions, :answers, :index]
-  before_action :user_has_agreed,       only: [:create, :new, :questions]
+  #before_action :user_has_agreed,       only: [:create, :new, :questions]
   before_action :admin_user,            only: :destroy
   before_action :correct_user,          only: :show
   before_action :raider_user,           only: :index
@@ -22,8 +22,6 @@ class TrialappsController < ApplicationController
     end
   end
   
-  def agree
-  end
   
   def questions
     @trialapp = current_user.trialapps.first
@@ -92,7 +90,7 @@ class TrialappsController < ApplicationController
     
     def user_has_agreed
       unless current_user.agreed?
-        redirect_to agree_path
+        redirect_to info_path
       end
     end
     

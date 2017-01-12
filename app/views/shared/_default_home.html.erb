@@ -1,41 +1,20 @@
-<header id="header">
-  <div class="content">
-    <div id="logo">
-      You Dont Know
-    </div>
-    <nav id="nav">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Help", help_path %></li>
-        <% if logged_in_raider? %>
-          <li><%= link_to "Applications", applications_path %></li>
-        <% end %>
-        <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", logout_path, method: "delete" %>
-              </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-    </nav>
-  </div>
-</header>
+
 
 <div id="slide1">
   <div class="content">
-    <h1>You Dont Know.</h1>
-    <h2>Competitive Raiding. Casual Atmosphere</h2>
+    <h1 class="website-title">You Dont Know</h1>
+    <h2 class="website-slogan">Competitive Raiding. Casual Atmosphere</h2>
+    <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <%= link_to "Apply Now!",   apply_path, class: "btn btn-lg btn-primary" %>
+        <%= link_to "Learn More",   info_path, class: "btn btn-lg btn-success" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 
 <div id="slide2">
   <div class="content">
@@ -44,7 +23,7 @@
       We accept serious raiders that want to push to be the best or friendly folks 
       that want to join just to add to our community. 
       Whatever you're looking for, you'll find it here.</h3>
-      <h4 class="name-dark">-- Skythan</h4>
+      <h4 class="name-dark">-- Skythan, Guild Master</h4>
     </div>
   </div>
 </div>
@@ -55,7 +34,7 @@
       <h3 class="blurb">Efficiency is our game. We raid just 3 hours a night 
       and what you see is what you get. No extra nights, no extra hours. 
       We value our time and make the most of it.</h3>
-      <h4 class="name">-- Rubbermould</h4>
+      <h4 class="name">-- Rubbermould, Officer</h4>
     </div>
   </div>
 </div>
@@ -65,7 +44,7 @@
     <div class="blurb-container">
       <h3 class="blurb">Looking for 5 man content? Every raider that wants their +12 for the week gets one.</h3>
       <%#= image_tag("illidan.jpg", align: "left") %>
-      <h4 class="name-dark">-- Beefsbear</h4>
+      <h4 class="name-dark">-- Beefsbear, Officer</h4>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :trialapps, dependent: :destroy
   
-  attr_accessor :remember_token, :activation_token, :reset_token
+  attr_accessor :remember_token, :activation_token, :reset_token, :agreed
   before_save   :downcase_email
   before_create :create_activation_digest
 

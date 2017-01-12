@@ -1,10 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-h1 {
+.website-title {
   font-family: Georgia;
   font-weight: normal;
   font-size: 55px;
@@ -14,7 +8,7 @@ h1 {
   padding: 0;
 }
 
-h2 {
+.website-slogan {
   font-family: "Arvo" serif;
   font-weight: normal;
   font-size: 40px;
@@ -24,8 +18,12 @@ h2 {
   padding: 0;
 }
 
-h3 {
-  font-family: "Oswald" serif;
+.text-center{
+  padding-top: 60px;
+}
+
+.blurb h3 {
+  font-family: "Oswald";
   font-weight: normal;
   font-size: 16px;
   text-align: center;
@@ -43,16 +41,12 @@ h3 {
   position: fixed;
 }
 
-#logo {
+/* #logo {
   font-family: Arial;
   font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
-}
-
-#logo p {
-  color: white;
-}
+} */
 
 .content {
   margin: 0 auto;
@@ -70,14 +64,14 @@ h3 {
 
 .blurb {
   font-family: "Goudy Bookletter 1911";
-  font-size: 30px;
+  font-size: 26px;
   text-align: left;
-  margin: 50px auto;
+  margin: auto
 }
 
 .name, .name-dark {
   font-family: "Wellfleet";
-  margin: 70px 0 0 75px;
+  margin: 25px 0 0 75px;
   font-size: 20px;
   color: #fff;
 }
@@ -91,7 +85,7 @@ h3 {
   background: url('green_splash.jpg') 50% 0 no-repeat fixed;
   background-size: cover;
   color: #fff;
-  height: 600px;
+  height: 100%;
   margin: 0;
   padding: 200px 0;
 }
@@ -103,7 +97,7 @@ h3 {
   height: 300px;
   margin: 0;
   overflow: hidden;
-  padding: 100px 0;
+  padding: 75px 0;
 }
 
 #slide3 {

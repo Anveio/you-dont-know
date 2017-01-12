@@ -14,6 +14,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def info
+    @user = current_user
+  end
+  
+  def agree
+    @user = current_user
+  end
+  
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
@@ -51,7 +59,7 @@ class UsersController < ApplicationController
   
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :agreed)
     end
     
     # Before filters
