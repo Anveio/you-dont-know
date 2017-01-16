@@ -13,9 +13,7 @@
       <%= f.text_field :server, class: 'form-control' %>
       
       <%= f.label :character_class %>
-      <%= f.select :character_class, options_for_select(['Death Knight', 'Demon Hunter', 'Druid', 'Hunter',
-                      'Mage', 'Monk', 'Paladin', 'Priest', 'Rogue', 'Shaman',
-                      'Warlock', 'Warrior']), class: 'btn btn-primary dropdown-toggle' %>
+      <%= f.select :character_class, options_for_select(Trialapp::LIST_OF_CLASSES), class: 'btn btn-primary dropdown-toggle' %>
       
       <%= f.label :spec %>
       <%= f.text_field :spec, class: 'form-control' %>
