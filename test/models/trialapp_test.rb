@@ -36,4 +36,8 @@ class TrialappTest < ActiveSupport::TestCase
     assert_not @trialapp.valid?
   end
   
+  test "character class should not be arbitrary" do
+    @trialapp.character_class = "EleGiggle"
+  end
+  
 end

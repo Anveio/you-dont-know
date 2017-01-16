@@ -1,8 +1,26 @@
 <% if @feed_items.any? %>
-  <ol class="trialapps">
-    <%= render @feed_items %>
-  </ol>
-  <%= will_paginate @feed_items %>
+<table class="table">
+  <thead>
+    <th>#</th>
+    <th>Name</th>
+    <th>Server</th>
+    <th>Class</th>
+    <th>Spec</th>
+    <th>Submitted</th>
+  </thead>
+  <tbody>
+    <% @feed_items.each do |app| %>
+    <tr>
+      <th scope="row"><%= app.id %></th>
+      <td><%= link_to app.character_name, app %></td>
+      <td><%= app.server %></td>
+      <td><%= app.character_class %></td>
+      <td><%= app.spec %></td>
+      <td><%= time_ago_in_words(app.created_at) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <% else %>
   <h4 class="center">No applications yet.</h4>
 <% end %>

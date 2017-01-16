@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 outlaw_rogue:
+  user: applicant
   character_name: "Anveio"
   server: "Thrall"
   character_class: "Rogue"

@@ -151,6 +151,10 @@ aside {
   margin-top: 15px;
 }
 
+.wrapped-text{
+  overflow-wrap: break-word;
+}
+
 .stats {
   overflow: auto;
   margin-top: 0;

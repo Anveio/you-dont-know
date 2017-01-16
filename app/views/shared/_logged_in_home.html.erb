@@ -2,13 +2,17 @@
 
 <div id="slide1">
   <div class="content">
-    <h1 class="website-title">You Dont Know</h1>
-    <h2 class="website-slogan">Competitive Raiding. Casual Atmosphere</h2>
+    <h1 class="website-title">You Don't Know</h1>
+    <h2 class="website-slogan">Competitive Raiding. Casual Atmosphere.</h2>
     <div class="row">
     <div class="col-sm-12">
       <div class="text-center">
-        <%= link_to "Begin Application",   apply_path, class: "btn btn-lg btn-primary" %>
-        <%= link_to "Learn More",   info_path, class: "btn btn-lg btn-success" %>
+        <% if logged_in_raider? %>
+          <%= link_to "Review Applications", applications_path, class: "btn btn-lg btn-primary" %>
+        <% else %>
+          <%= link_to "Begin Application", apply_path, class: "btn btn-lg btn-primary" %>
+        <%= link_to "Learn More", info_path, class: "btn btn-lg btn-success" %>
+        <% end %>
         </div>
       </div>
     </div>
