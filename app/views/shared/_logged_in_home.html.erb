@@ -1,20 +1,19 @@
 
 
-<section class="jumbotron">
+<section class="jumbotron vertical-center">
   <div class="container">
-    <h1 class="website-title">You Don't Know</h1>
-    <h2 class="website-slogan">Competitive Raiding. Casual Atmosphere.</h2>
-    <div class="row">
-    <div class="col-sm-12">
-      <div class="text-center">
+    <div class="text-center">
+      <h1 class="website-title">You Don't Know</h1>
+      <h2 class="website-slogan">Competitive Raiding. Casual Atmosphere.</h2>
         <% if logged_in_raider? %>
           <%= link_to "Review Applications", applications_path, class: "btn btn-lg btn-primary" %>
         <% else %>
-          <%= link_to "Begin Application", apply_path, class: "btn btn-lg btn-primary" %>
+          <%= link_to "Begin Application!", apply_path, class: "btn btn-lg btn-primary" %>
         <%= link_to "Learn More", info_path, class: "btn btn-lg btn-success" %>
         <% end %>
-        </div>
       </div>
+    </div>
+    <div class="clearfix"></div>
   </div>
 </section>
 
@@ -46,7 +45,6 @@
   <div class="content">
     <div class="blurb-container">
       <h3 class="blurb">Looking for 5 man content? Every raider that wants their +12 for the week gets one.</h3>
-      <%#= image_tag("illidan.jpg", align: "left") %>
       <h4 class="name-dark">-- Beefsbear, Officer</h4>
     </div>
   </div>
