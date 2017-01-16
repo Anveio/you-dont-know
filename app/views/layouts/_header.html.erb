@@ -3,7 +3,9 @@
     <%= link_to "You Dont Know", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Help", help_path %></li>
+        <% unless logged_in? %>
+          <li><%= link_to "Sign up", signup_path %></li>
+        <% end %>
         <% if logged_in_raider? %>
           <li><%= link_to "Applications", applications_path %></li>
         <% end %>
