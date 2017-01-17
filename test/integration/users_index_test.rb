@@ -7,10 +7,16 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     @other_user = users(:invader)
   end
   
-  test "should redirect index when viewing as non admin" do
-    log_in_as(@user)
+  test "should redirect index when viewing as non officer" do
+    log_in_as(@other_user)
     get users_path
     assert_redirected_to root_url
+  end
+  
+  test "officers can view users index" do
+    log_in_as(@user)
+    get users_path
+    assert_template 'users/index'
   end
   
   test "index including pagination" do

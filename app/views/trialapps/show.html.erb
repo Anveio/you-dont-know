@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-12">
     <h1>
-      <%= "#{@trialapp.character_name}\'s Application" %>
+      <%= "#{@trialapp.character_name}\'s Application: #{trialapp_status(@trialapp)}" %>
     </h1>
   </div>
   <div class="col-md-12">
@@ -14,5 +14,11 @@
       <p class="wrapped-text"><%= "#{@trialapp.character_name}\'s answer: #{@trialapp.answer_three}" %></p>
     <h4>Tell us a little about yourself.</h4>
       <p class="wrapped-text"><%= "#{@trialapp.character_name}\'s answer: #{@trialapp.answer_four}" %></p>
+    <div class="text-center">  
+      <% if logged_in_officer? %>
+        <%= button_to "Accept Application", {:controller => :trialapps, :action => :accept, :id => @trialapp.id}, data: { confirm: "Accept this application?" }, class: "btn btn-lg btn-success" %>
+        <%= button_to "Reject Application", {:controller => :trialapps, :action => :reject, :id => @trialapp.id}, data: { confirm: "Reject this application?" }, class: "btn btn-lg btn-danger" %>
+      <% end %>
+    </div>  
   </div>
 </div>

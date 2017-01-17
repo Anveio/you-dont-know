@@ -5,4 +5,14 @@ module ApplicationHelper
     base_title = "You Dont Know"
     page_title.empty? ? base_title : "#{page_title} | #{base_title}"
   end
+  
+  def trialapp_status(trialapp)
+    if trialapp.accepted == true
+      "Accepted"
+    elsif trialapp.accepted == false
+      "Declined"
+    else
+      "Pending"
+    end
+  end
 end

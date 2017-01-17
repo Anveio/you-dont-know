@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     end
     
     def officer_user
-      redirect_to(root_url) unless current_user.officer?
+      redirect_to(root_url) unless current_user.officer? || current_user.admin?
     end
     
     def admin_user

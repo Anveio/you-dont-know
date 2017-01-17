@@ -1,9 +1,10 @@
 class TrialappsController < ApplicationController
-  before_action :logged_in_user,        only: [:create, :new, :questions, :answers, :index]
-  before_action :user_has_accepted_terms,       only: [:create, :new, :questions]
-  before_action :admin_user,            only: :destroy
-  before_action :correct_user,          only: :show
-  before_action :raider_user,           only: :index
+  before_action :logged_in_user
+  before_action :user_has_accepted_terms, only: [:create, :new, :questions]
+  before_action :officer_user,            only: [:accept, :reject]
+  before_action :admin_user,              only: :destroy
+  before_action :correct_user,            only: :show
+  before_action :raider_user,             only: :index
   
   def new
     #if current_user.trialapps.exists?
@@ -27,10 +28,14 @@ class TrialappsController < ApplicationController
     @trialapp = current_user.trialapps.first
   end
   
-  def reject
+  def accept
+    @trialapp = Trialapp.find(params[:id]).update_attribute(:accepted, true)
+    redirect_to :back
   end
   
-  def accept
+  def reject
+    @trialapp = Trialapp.find(params[:id]).update_attribute(:accepted, false)
+    redirect_to :back
   end
   
   def edit
@@ -77,12 +82,12 @@ class TrialappsController < ApplicationController
     def correct_user
       @trialapp = Trialapp.find(params[:id])
       @user = User.find(@trialapp.user_id)
-      redirect_to(root_url) unless (current_user = @user || current_user.admin?)
+      redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
     end
     
     def raider_user
       @user = current_user
-      unless @user.raider?
+      unless (@user.raider? || @user.admin? || @user.officer?)
         redirect_to(root_url)
         flash[:danger] = "You're not authorized to view this page."
       end
@@ -94,6 +99,10 @@ class TrialappsController < ApplicationController
         redirect_to info_path
         flash[:info] = "Please read this page and check the box to start your application."
       end
+    end
+    
+    def officer_user
+      redirect_to(root_url) unless current_user.officer? || current_user.admin?
     end
     
     def admin_user

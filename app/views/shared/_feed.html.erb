@@ -7,6 +7,7 @@
     <th>Class</th>
     <th>Spec</th>
     <th>Submitted</th>
+    <th>Status</th>
   </thead>
   <tbody>
     <% @feed_items.each do |app| %>
@@ -17,6 +18,7 @@
       <td><%= app.character_class %></td>
       <td><%= app.spec %></td>
       <td><%= "#{time_ago_in_words(app.created_at)} ago" %></td>
+      <td><%= trialapp_status(app) %></td>
     </tr>
     <% end %>
   </tbody>

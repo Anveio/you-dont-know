@@ -6,6 +6,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user = users(:shovon)
     @admin = users(:admin)
     @other_user = users(:invader)
+    @trialapp = trialapps(:outlaw_rogue)
   end
   
   test "should get new" do
@@ -42,6 +43,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not @user.raider?
   end
   
+  test "officer attribute should not be editable via the web" do
+    log_in_as(@other_user)
+    assert_not @other_user.officer?
+    patch user_path(@other_user), params: { user: { password: 'password',
+                                              password_confirmation: 'password',
+                                              raider: true } }
+    assert_not @other_user.raider?
+  end
+  
   test "should redirect destroy to log in page when not logged in" do
     assert_no_difference 'User.count' do
       delete user_path(@user)
@@ -68,5 +78,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get info_path
     assert_template 'users/info'
+  end
+  
+  test "officers can view applications" do
+    log_in_as(@user)
+    get trialapps_path(@trialapp)
+    assert_template 'trialapps/index'
   end
 end

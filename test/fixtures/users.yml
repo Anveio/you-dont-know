@@ -5,6 +5,8 @@ shovon:
   activated: true
   activated_at: Time.zone.now
   terms_of_service: true
+  raider: false
+  officer: true
   
 raider:
   name: Anveio
@@ -13,6 +15,7 @@ raider:
   activated: true
   activated_at: Time.zone.now
   raider: true
+  officer: false
   terms_of_service: true
   
 applicant:
