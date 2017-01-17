@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :index, 
-                                        :destroy]
-  before_action :correct_user,   only: [:show, :edit, :update]
-  before_action :admin_user,     only: [:destroy, :index]
+  before_action :logged_in_user,          only: [:edit, :update, 
+                                                :destroy, :index]
+  before_action :correct_user,            only: [:edit, :update]
+  before_action :officer_user,            only: [:index]
+  before_action :admin_user,              only: [:destroy]
+  before_action :officer_or_correct_user, only: [:show]
+  
   
   def show
     @user = User.find(params[:id])
@@ -20,12 +23,13 @@ class UsersController < ApplicationController
   
   def agree
     @user = current_user
-    if @user.update_attribute(:terms_of_service, user_params)
+    @user.update_attributes(user_params)
+    if @user.terms_of_service?
       flash[:success] = "Thanks. You're now able to begin your application."
       redirect_to apply_path
     else
-      render 'info'
       flash[:info] = "Make sure to check the box."
+      render 'info'
     end
   end
   
@@ -76,7 +80,16 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
     
+    def officer_user
+      redirect_to(root_url) unless current_user.officer?
+    end
+    
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+    
+    def officer_or_correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
     end
 end

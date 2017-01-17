@@ -45,6 +45,14 @@ module SessionsHelper
     end
   end
   
+  def logged_in_officer?
+    if current_user.nil?
+      return false
+    else
+      return current_user.officer
+    end
+  end
+  
   # Logs out the current user.
   def log_out
     forget(current_user)

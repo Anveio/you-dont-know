@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116114549) do
+ActiveRecord::Schema.define(version: 20170117114249) do
 
   create_table "trialapps", force: :cascade do |t|
     t.integer  "user_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170116114549) do
     t.datetime "reset_sent_at"
     t.boolean  "raider",            default: false
     t.boolean  "terms_of_service"
+    t.boolean  "officer",           default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
