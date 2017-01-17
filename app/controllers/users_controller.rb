@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :index, 
                                         :destroy]
   before_action :correct_user,   only: [:show, :edit, :update]
-  before_action :admin_user,     only: [:destroy]
+  before_action :admin_user,     only: [:destroy, :index]
   
   def show
     @user = User.find(params[:id])
@@ -20,6 +20,13 @@ class UsersController < ApplicationController
   
   def agree
     @user = current_user
+    if @user.update_attribute(:terms_of_service, user_params)
+      flash[:success] = "Thanks. You're now able to begin your application."
+      redirect_to apply_path
+    else
+      render 'info'
+      flash[:info] = "Make sure to check the box."
+    end
   end
   
   def destroy
@@ -59,7 +66,7 @@ class UsersController < ApplicationController
   
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :agreed)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :terms_of_service)
     end
     
     # Before filters

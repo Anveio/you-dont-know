@@ -20,8 +20,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   
   test "access page while logged in" do
     log_in_as(@user)
-    get users_path
-    assert_template 'users/index'
+    get user_path(@user)
+    assert_template 'users/show'
   end
 
   test "admin attribute should not be editable via the web" do
@@ -62,5 +62,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_difference 'User.count', -1 do
       delete user_path(@other_user)
     end
+  end
+  
+  test "should not show checkbox if user has already agreed" do
+    log_in_as(@user)
+    get info_path
+    assert_template 'users/info'
   end
 end

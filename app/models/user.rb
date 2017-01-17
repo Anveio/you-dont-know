@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :trialapps, dependent: :destroy
   
-  attr_accessor :remember_token, :activation_token, :reset_token, :agreed
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
 
@@ -12,6 +12,7 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: {minimum: 6 }, allow_nil: true
+  validates_acceptance_of :terms_of_service, accept: true
   
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -66,5 +67,9 @@ class User < ApplicationRecord
   
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+  
+  def agree_to_terms_of_service
+    update_attribute(:terms_of_service, true)
   end
 end

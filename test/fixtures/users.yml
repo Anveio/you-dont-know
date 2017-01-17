@@ -4,6 +4,7 @@ shovon:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: Time.zone.now
+  terms_of_service: true
   
 raider:
   name: Anveio
@@ -11,8 +12,8 @@ raider:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: Time.zone.now
-  admin: true
   raider: true
+  terms_of_service: true
   
 applicant:
   name: Able Bodied
@@ -20,6 +21,15 @@ applicant:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: Time.zone.now
+  terms_of_service: true
+  
+new_applicant:
+  name: Able Bodied
+  email: totally@new.com
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: Time.zone.now
+  terms_of_service: false
   
 admin:
   name: Admini Strator
@@ -28,6 +38,7 @@ admin:
   admin: true
   activated: true
   activated_at: Time.zone.now
+  terms_of_service: true
   
 invader:
   name: Invader Zim
@@ -42,6 +53,7 @@ archer:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: Time.zone.now
+  terms_of_service: true
   
 other:
   name: Other User
@@ -49,12 +61,4 @@ other:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: Time.zone.now
-  
-<% 30.times do |n| %>
-user_<%= n %>:
-  name:  <%= "User #{n}" %>
-  email: <%= "user-#{n}@example.com" %>
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: Time.zone.now
-<% end %>
+  terms_of_service: true

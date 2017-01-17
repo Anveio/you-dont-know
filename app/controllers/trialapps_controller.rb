@@ -1,6 +1,6 @@
 class TrialappsController < ApplicationController
   before_action :logged_in_user,        only: [:create, :new, :questions, :answers, :index]
-  #before_action :user_has_agreed,       only: [:create, :new, :questions]
+  before_action :user_has_accepted_terms,       only: [:create, :new, :questions]
   before_action :admin_user,            only: :destroy
   before_action :correct_user,          only: :show
   before_action :raider_user,           only: :index
@@ -73,7 +73,6 @@ class TrialappsController < ApplicationController
                                       :answer_one, :answer_two, :answer_three,
                                       :answer_four)
     end
-    
     # Before filters
     def correct_user
       @trialapp = Trialapp.find(params[:id])
@@ -82,15 +81,18 @@ class TrialappsController < ApplicationController
     end
     
     def raider_user
-      unless current_user.raider?
+      @user = current_user
+      unless @user.raider?
         redirect_to(root_url)
         flash[:danger] = "You're not authorized to view this page."
       end
     end
     
-    def user_has_agreed
-      unless current_user.agreed?
+    def user_has_accepted_terms
+      @user = current_user
+      unless @user.terms_of_service?
         redirect_to info_path
+        flash[:info] = "Please read this page and check the box to start your application."
       end
     end
     

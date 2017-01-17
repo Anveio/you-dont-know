@@ -2,6 +2,7 @@ require 'test_helper'
 
 class TrialappsControllerTest < ActionDispatch::IntegrationTest
   def setup
+    @new_applicant = users(:new_applicant)
     @applicant= users(:applicant)
     @outlaw_rogue = trialapps(:outlaw_rogue)
   end
@@ -10,6 +11,17 @@ class TrialappsControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@applicant)
     get apply_path
     assert_response :success
+  end
+  
+  test "should redirect apply when not logged in" do
+    get apply_path
+    assert_redirected_to login_path
+  end
+  
+  test "should redirect apply to info page when new applicant" do
+    log_in_as(@new_applicant)
+    get apply_path
+    assert_redirected_to info_path
   end
   
   test "should redirect applications when not logged in" do

@@ -7,11 +7,6 @@ class TrialappCreateTest < ActionDispatch::IntegrationTest
     @trialapp = trialapps(:outlaw_rogue)
   end
   
-  test "should redirect when not logged in" do
-    get apply_path
-    assert_redirected_to login_path
-  end
-  
   test "invalid trialapp information" do
     log_in_as(@user)
     get apply_path
