@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TrialappsControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @officer = users(:shovon)
+    @officer = users(:officer)
     @raider = users(:raider)
     @new_applicant = users(:new_applicant)
     @applicant= users(:applicant)
@@ -55,10 +55,22 @@ class TrialappsControllerTest < ActionDispatch::IntegrationTest
     assert_template 'trialapps/index'
   end
   
+  test "officers can view specific applications" do
+    log_in_as(@officer)
+    get trialapp_path(@outlaw_rogue)
+    assert_template 'trialapps/show'
+  end
+  
   test "raiders can view applications" do
     log_in_as(@raider)
     get applications_path
     assert_template 'trialapps/index'
     get trialapp_path(@outlaw_rogue)
+  end
+  
+  test "raiders can view specific applications" do
+    log_in_as(@raider)
+    get trialapp_path(@outlaw_rogue)
+    assert_template 'trialapps/show'
   end
 end

@@ -17,6 +17,16 @@ raider:
   raider: true
   officer: false
   terms_of_service: true
+
+officer:
+  name: skythan
+  email: skythan@officers.com
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: Time.zone.now
+  raider: false
+  officer: true
+  terms_of_service: true
   
 applicant:
   name: Able Bodied

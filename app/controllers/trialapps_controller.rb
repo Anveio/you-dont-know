@@ -3,8 +3,8 @@ class TrialappsController < ApplicationController
   before_action :user_has_accepted_terms, only: [:create, :new, :questions]
   before_action :officer_user,            only: [:accept, :reject]
   before_action :admin_user,              only: :destroy
-  before_action :correct_user,            only: :show
-  before_action :raider_user,             only: :index
+  before_action :correct_user,            only: [:edit]
+  before_action :raider_user,             only: [:show, :index]
   
   def new
     #if current_user.trialapps.exists?
@@ -82,33 +82,36 @@ class TrialappsController < ApplicationController
     def correct_user
       @trialapp = Trialapp.find(params[:id])
       @user = User.find(@trialapp.user_id)
-      redirect_to(root_url) unless (current_user?(@user) || current_user.admin?)
+      redirect_to(root_url) unless (current_user?(@user))
     end
     
     def raider_user
       @user = current_user
-      unless (@user.raider? || @user.admin? || @user.officer?)
-        redirect_to(root_url)
+      unless (@user.raider? || @user.officer? || @user.admin?)
         flash[:danger] = "You're not authorized to view this page."
+        redirect_to(root_url)
+      end
+    end
+    
+    def officer_user
+      @user = current_user
+      unless (@user.officer?)
+        redirect_to(root_url) unless current_user.officer? || current_user.admin?
+      end
+    end
+    
+    def admin_user
+      unless current_user.admin?
+        flash[:danger] = "You're not authorized to view this page."
+        redirect_to(root_url)
       end
     end
     
     def user_has_accepted_terms
       @user = current_user
       unless @user.terms_of_service?
-        redirect_to info_path
         flash[:info] = "Please read this page and check the box to start your application."
-      end
-    end
-    
-    def officer_user
-      redirect_to(root_url) unless current_user.officer? || current_user.admin?
-    end
-    
-    def admin_user
-      unless current_user.admin?
-        redirect_to(root_url)
-        flash[:danger] = "You're not authorized to view this page."
+        redirect_to info_path
       end
     end
 end
