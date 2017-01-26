@@ -9,10 +9,10 @@ module ApplicationHelper
   def trialapp_status(trialapp)
     if trialapp.accepted == true
       "Accepted"
-    elsif trialapp.accepted == false
-      "Declined"
-    else
+    elsif trialapp.accepted == nil
       "Pending"
+    else
+      "Declined"
     end
   end
 end
