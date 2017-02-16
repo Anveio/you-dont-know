@@ -36,6 +36,11 @@ class TrialappsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
   
+  test "users can access their own applications" do
+    log_in_as(@applicant)
+    get trialapp_path(@applicant.trialapps.first)
+  end
+  
   test "should redirect applications when not logged in as raider" do
     log_in_as @applicant
     get applications_path

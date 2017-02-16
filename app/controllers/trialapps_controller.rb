@@ -3,7 +3,7 @@ class TrialappsController < ApplicationController
   before_action :user_has_accepted_terms, only: [:create, :new, :questions]
   before_action :officer_user,            only: [:accept, :reject]
   before_action :admin_user,              only: :destroy
-  before_action :correct_user,            only: [:edit]
+  before_action :correct_user,            only: [:edit, :answer]
   before_action :raider_user,             only: [:show, :index]
   
   def new
