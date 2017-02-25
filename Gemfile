@@ -16,6 +16,7 @@ gem 'coffee-rails', '4.2.1'
 gem 'jquery-rails', '4.1.1'
 gem 'turbolinks',   '5.0.0'
 gem 'jbuilder',     '2.4.1'
+gem 'platform-api', git: 'https://github.com/jalada/platform-api', branch: 'master'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'
@@ -38,6 +39,7 @@ end
 
 group :production do
   gem 'pg', '0.18.4'
+  gem 'letsencrypt-rails-heroku'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

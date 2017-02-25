@@ -1,22 +1,29 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "You Dont Know", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand logo" href="/">You Don't Know</a>
+    </div> <!-- end div class="navbar-header" -->
+    <div class="collapse navbar-collapse navbar-right">
+      <ul class="nav navbar-nav">
         <% unless logged_in? %>
-          <li><%= link_to "Sign up", signup_path %></li>
+          <li class="<%= 'active' if logging_in? %>"> <a href="/login">Log In</a> </li>
+          <li class="<%= 'active' if signing_up? %>"> <a href="/signup">Sign Up</a> </li> 
         <% end %>
         <% if logged_in_officer? %>
-          <li><%= link_to "Users", users_path %></li>
-          <li><%= link_to "Applications", applications_path %></li>
+          <li class="<%= 'active' if viewing_all_applications? %>"> <a href="/applications">Applications</a></li>
+          <li class="<%= 'active' if viewing_users_index? %>"> <a href="/users">Users</a></li>
         <% elsif logged_in_raider? %>
-          <li><%= link_to "Applications", applications_path %></li>
+          <li class="<%= 'active' if viewing_all_applications? %>"> <a href="/applications">Applications</a></li>
         <% end %>
         <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
+          <li class="dropdown<%= ' active' if viewing_account_info?%>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
@@ -26,10 +33,14 @@
               </li>
             </ul>
           </li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
         <% end %>
       </ul>
-    </nav>
-  </div>
-</header>
+    </div> <!-- end div class="collapse navbar-collapse" -->
+  </div> <!-- end div class="container" -->
+</div> <!-- end div class="navbar navbar-default navbar-fixed-top" -->
+
+
+
+
+
+

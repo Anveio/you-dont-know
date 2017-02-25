@@ -37,6 +37,10 @@ module SessionsHelper
     !current_user.nil?
   end
   
+  def logging_in?
+    params[:controller] == 'sessions' && params[:action] == 'new'
+  end
+  
   def logged_in_raider?
     if current_user.nil?
       return false

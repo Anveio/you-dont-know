@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get    '/apply',            to: 'trialapps#new'
   post   '/apply',            to: 'trialapps#create'
   get    '/questions',        to: 'trialapps#questions'
+  #post   '/questions',        to: 'trialapps#answers'
   get    '/applications',     to: 'trialapps#index'
   get    '/edit',             to: 'trialapps#edit'
   post   '/accept',           to: 'trialapps#accept'
