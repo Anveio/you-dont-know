@@ -13,4 +13,7 @@ class StaticPagesController < ApplicationController
   
   def privacy_policy
   end
+  
+  def recruitment
+  end
 end

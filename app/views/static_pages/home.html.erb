@@ -1,7 +1,67 @@
 
 
-<% if logged_in? %>
-  <%= render 'shared/logged_in_home' %>
-<% else %>
-  <%= render 'shared/default_home' %>
-<% end %>
+<section class="jumbotron vertical-center">
+  <div class="container">
+    <h1 id="guild-title">You Don't Know</h1>
+    <h2 id="guild-slogan">Competitive Raiding. Casual Atmosphere.</h2>
+    <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <% if logged_in_raider? %>
+          <%= link_to "Review Applications", applications_path, class: "btn btn-lg btn-primary" %>
+        <% else %>
+          <%= link_to "Apply Now!", apply_path, class: "btn btn-lg btn-success" %>
+        <%= link_to "Learn More", info_path, class: "btn btn-lg btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="text_slide">
+  <div class="content">
+    <div class="blurb-container">
+      <h3 class="blurb">You Dont Know is commited to help you play, progress, and kill bosses. 
+      We accept serious raiders that want to push to be the best or friendly folks 
+      that just want to hang out and add to our community. 
+      Whatever you're looking for, you'll find it here.</h3>
+      <h4 class="name-dark">-- Skythan, Guild Master</h4>
+    </div>
+  </div>
+</div>
+
+<div class="image_slide mad_bomber">
+  <div class="content">
+    <div class="blurb-container-black-bg">
+      <h3 class="blurb">Efficiency is our game. We raid just 3 hours a night 
+      and what you see is what you get. No extra nights, no extra hours. 
+      We value our time and make the most of it.</h3>
+      <h4 class="name">-- Rubbermould, Officer</h4>
+    </div>
+  </div>
+</div>
+
+<div class="text_slide">
+  <div class="content">
+    <div class="blurb-container">
+      <h3 class="blurb">Looking for 5 man content? Every raider that 
+      wants their +15 for the week gets one.</h3>
+      <h4 class="name-dark">-- Beefsbear, Officer</h4>
+    </div>
+  </div>
+</div>
+
+<div class="image_slide tinkmaster_overspark">
+  <div class="content">
+    <div class="blurb-container-black-bg">
+      <h3 class="blurb">We want your application to succeed! Check out our
+      <%= link_to "recruitment page", recruitment_path %> to learn more about how we raid and what
+      classes we're recruiting. Don't be discouraged, though, if you don't see your class there.
+      We're always taking great players of any class.
+      </h3>
+      <h4 class="name">-- Wulfer, Officer</h4>
+    </div>
+  </div>
+</div>
