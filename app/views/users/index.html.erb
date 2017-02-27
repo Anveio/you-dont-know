@@ -1,10 +1,35 @@
 <% provide(:title, 'All users') %>
 <h1>All Users (Officers Only)</h1>
 
+<% if @users.any? %>
 <%= will_paginate %>
-
-<ul class="users">
-  <%= render @users %>
-</ul>
-
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <th>#</th>
+      <th>Name</th>
+      <th>Signed up</th>
+      <th>Applied?</th>
+      <th>Role</th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <th scope="row"><%= user.id %></th>
+        <td>  
+          <%= link_to user.name, user %>
+            <% if current_user.admin? && !current_user?(user) %>
+              | <%= link_to "delete", user, method: :delete, 
+              data: {confirm: "You sure?" } %>
+          <% end %>
+        </td>
+        <td><%= "#{time_ago_in_words(user.created_at)} ago" %></td>
+        <td><%= user_has_application(user) %></td>
+        <td><%= role_of_user(user) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <%= will_paginate %>
+<% end %>

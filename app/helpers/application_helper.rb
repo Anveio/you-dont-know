@@ -15,4 +15,14 @@ module ApplicationHelper
       "Declined"
     end
   end
+  
+  def trialapp_row_class(trialapp)
+    if trialapp.accepted == true
+      "success"
+    elsif trialapp.accepted == false
+      "danger"
+    else
+      "active"
+    end
+  end
 end
