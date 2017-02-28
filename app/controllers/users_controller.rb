@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user,          only: [:edit, :update, 
-                                                :destroy, :index]
+                                                :destroy, :index, :show]
   before_action :correct_user,            only: [:edit, :update]
   before_action :officer_user,            only: [:index]
   before_action :admin_user,              only: [:destroy]
@@ -89,7 +89,8 @@ class UsersController < ApplicationController
     end
     
     def officer_or_correct_user
+      permitted = current_user.officer? || current_user.admin?
       @user = User.find(params[:id])
-      redirect_to(root_url) unless (current_user?(@user) || current_user.officer?)
+      redirect_to(root_url) unless (current_user?(@user) || permitted)
     end
 end

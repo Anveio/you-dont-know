@@ -84,12 +84,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "officer is not admin" do
     assert_not @officer.admin?
   end
-  
-  test "offcers can view user page" do
-    log_in_as(@officer)
-    get user_path(@user)
-    assert_template 'users/show'
-  end
-  
-  
 end
