@@ -7,6 +7,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @admin = users(:admin)
     @other_user = users(:invader)
     @trialapp = trialapps(:outlaw_rogue)
+    @officer = users(:officer)
   end
   
   test "should get new" do
@@ -80,9 +81,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_template 'users/info'
   end
   
-  test "officers can view applications" do
-    log_in_as(@user)
-    get trialapps_path(@trialapp)
-    assert_template 'trialapps/index'
+  test "officer is not admin" do
+    assert_not @officer.admin?
   end
+  
+  test "offcers can view user page" do
+    log_in_as(@officer)
+    get user_path(@user)
+    assert_template 'users/show'
+  end
+  
+  
 end

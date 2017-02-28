@@ -6,6 +6,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:shovon)
     @other_user = users(:invader)
+    @officer = users(:officer)
   end
   
   test "profile display" do
@@ -20,5 +21,11 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     log_in_as(@other_user)
     get user_path(@user)
     assert_redirected_to root_url
+  end
+  
+  test "offcers can view user page" do
+    log_in_as(@officer)
+    get user_path(@user)
+    assert_template 'users/show'
   end
 end
