@@ -1,39 +1,11 @@
-# Moonbeam, by Shovon Hasan
+### Website Hosted at:
 
-Moonbeam is a microblogging social media platform created by Shovon Hasan with guidance from the  [*Ruby on Rails Tutorial*](http://www.railstutorial.org/)
-by [Michael Hartl](http://www.michaelhartl.com/).
+www.youdontknow.ca
 
-## License
+This website was built for a client and the source code is now available publicly on GitHub. 
 
-All source code in the [Ruby on Rails Tutorial](http://railstutorial.org/)
-is available jointly under the MIT License and the Beerware License. See
-[LICENSE.md](LICENSE.md) for details.
+## Info
 
-## Getting started
+This is the source code for the official website of "You Dont Know", a Horde guild on Thrall-US in World of Warcraft. New users can submit their applications by signing up and answering a small questionnaire, and then edit or delete them later if they wish. Regular guild members can view these applications, and officers can accept or reject applications.
 
-To get started with the app, clone the repo and then install the needed gems:
 
-```
-$ bundle install --without production
-```
-
-Next, migrate the database:
-
-```
-$ rails db:migrate
-```
-
-Finally, run the test suite to verify that everything is working correctly:
-
-```
-$ rails test
-```
-
-If the test suite passes, you'll be ready to run the app in a local server:
-
-```
-$ rails server
-```
-
-For more information, see the
-[*Ruby on Rails Tutorial* book](http://www.railstutorial.org/book).
